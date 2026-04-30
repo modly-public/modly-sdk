@@ -20,7 +20,7 @@ import type {
 export interface ModlyClientOptions {
   /** Snowflake of the Discord guild the API key is scoped to. */
   guildId: string;
-  /** Guild-scoped API key — created in dashboard → Server Settings → API keys. */
+  /** Personal access token (modly_pat_…) created in dashboard → Account Settings → API tokens. */
   apiKey: string;
   /** Defaults to https://modly.net. Override for self-host or staging. */
   baseUrl?: string;

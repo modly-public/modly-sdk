@@ -40,7 +40,7 @@ await modly.webhooks.sendNow({
 
 ## API keys
 
-Generate a guild-scoped API key in the dashboard at **Server Settings → API keys**. Keys are scoped to a single guild, identified by the `guildId` you pass to the client.
+Generate a personal access token in the dashboard at **Account Settings → API tokens**. The token grants the same access as your dashboard session — guild-level authorization happens server-side based on the `guildId` you scope each request to. Tokens look like `modly_pat_…`.
 
 ## Coverage
 
