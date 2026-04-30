@@ -8,6 +8,8 @@
 import { ApiError } from "./errors.js";
 import type {
   EmbedTemplate,
+  EvaderDetectionRun,
+  EvaderResolution,
   ModerationCase,
   StoredMessage,
   WebhookGroup,
@@ -119,5 +121,30 @@ export class ModlyClient {
         (r) => r.cases,
       );
     },
+  };
+
+  // ─── Safety ─────────────────────────────────────────────────────────
+  readonly safety = {
+    listEvaderDetections: (opts?: RequestOptions & { userId?: string; riskBand?: string; unresolved?: boolean; limit?: number }) => {
+      const qs = new URLSearchParams();
+      if (opts?.userId) qs.set("userId", opts.userId);
+      if (opts?.riskBand) qs.set("riskBand", opts.riskBand);
+      if (opts?.unresolved !== undefined) qs.set("unresolved", String(opts.unresolved));
+      if (opts?.limit) qs.set("limit", String(opts.limit));
+      const suffix = qs.size > 0 ? `?${qs.toString()}` : "";
+      return this.request<{ detections: EvaderDetectionRun[] }>(
+        "GET",
+        `/safety/evader-detections${suffix}`,
+        undefined,
+        opts,
+      ).then((r) => r.detections);
+    },
+    resolveEvaderDetection: (id: string, resolution: EvaderResolution, opts?: RequestOptions) =>
+      this.request<{ detection: EvaderDetectionRun }>(
+        "POST",
+        `/safety/evader-detections/${encodeURIComponent(id)}/resolve`,
+        { resolution },
+        opts,
+      ).then((r) => r.detection),
   };
 }

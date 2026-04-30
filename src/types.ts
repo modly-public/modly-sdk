@@ -88,3 +88,26 @@ export interface ModerationCase {
   createdAt: string;
   expiresAt: string | null;
 }
+
+// ─── Safety ───────────────────────────────────────────────────────────
+
+export type EvaderRiskBand = "none" | "low" | "medium" | "high" | "critical";
+export type EvaderResolution = "reviewed" | "ignored" | "confirmed" | "false_positive";
+
+export interface EvaderDetectionRun {
+  id: string;
+  guildId: string;
+  userId: string;
+  score: number;
+  riskBand: EvaderRiskBand;
+  decision: string;
+  action: string;
+  threshold: number;
+  signals: unknown;
+  summary: string;
+  createdCaseId: string | null;
+  resolvedAt: string | null;
+  resolvedBy: string | null;
+  resolution: EvaderResolution | null;
+  createdAt: string;
+}
