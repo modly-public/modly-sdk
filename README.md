@@ -1,72 +1,109 @@
 # @modly/sdk
 
-Typed TypeScript client for the [Modly](https://modly.net) Discord bot REST API.
+> Modly is the all-in-one Discord moderation bot — this is the official **TypeScript SDK** for its REST API. Use it from Node 20+, edge runtimes, or any other JS host to programmatically drive automod rules, embeds, webhooks, custom commands, moderation cases, forms, and the rest of the public guild surface.
+
+- Bot: <https://modly.net>
+- Issues: <https://github.com/modly-public/modly-sdk/issues>
+- License: [MIT](./LICENSE)
+
+## Install
 
 ```bash
-npm i @modly/sdk
+npm install @modly/sdk
 ```
 
-## Quick start
+## Quickstart
 
 ```ts
 import { ModlyClient } from "@modly/sdk";
 
 const modly = new ModlyClient({
   guildId: "1234567890",
-  apiKey:  process.env.MODLY_API_KEY!,
+  apiKey: process.env.MODLY_API_KEY!, // modly_pat_...
 });
 
-// List saved webhook targets in this guild
-const targets = await modly.webhooks.listTargets();
+// 1. List moderation cases
+const cases = await modly.moderation.listCases({ limit: 25 });
 
-// Save an embed template
+// 2. Save and broadcast an embed
 await modly.embeds.save("weekly-update", {
   content: "📰 Weekly digest",
-  embeds: [
-    {
-      title: "What shipped this week",
-      color: 0x7c3aed,
-      description: "Highlights from the team — full notes in <#1234>.",
-    },
-  ],
+  embeds: [{ title: "What shipped", color: 0x7c3aed }],
 });
 
-// Broadcast it to a target
+const targets = await modly.webhooks.listTargets();
 await modly.webhooks.sendNow({
   targetIds: [targets[0]!.id],
   embedTemplateName: "weekly-update",
 });
 
-// Inspect the module catalog and a live schema
-const modules = await modly.modules.list();
-const automodSchema = await modly.modules.schema("automod");
+// 3. Create a custom command
+await modly.customCommands.save({
+  name: "rules",
+  triggerMode: "slash",
+  responseMode: "embed",
+  body: { embeds: [{ title: "Rules", description: "Be kind." }] },
+});
 ```
 
-## API keys
+Three end-to-end walkthroughs live in [`docs/quickstart.md`](./docs/quickstart.md).
 
-Generate a personal access token in the dashboard at **Account Settings → API tokens**. The token grants the same access as your dashboard session — guild-level authorization happens server-side based on the `guildId` you scope each request to. Tokens look like `modly_pat_…`.
+## Authentication
+
+Generate a personal access token in the dashboard at **Account Settings → API tokens**. Tokens look like `modly_pat_...` and are sent on every request as `Authorization: Bearer <token>`. Each token is bound to your dashboard session's permissions; the `guildId` you pass on the client decides which guild every call targets.
+
+If you self-host Modly on a different origin, pass `baseUrl`:
+
+```ts
+new ModlyClient({ guildId, apiKey, baseUrl: "https://modly.example.com" });
+```
+
+## Directory map
+
+```
+modly-sdk/
+├── src/
+│   ├── client.ts           # ModlyClient — transport + hand-rolled namespaces
+│   ├── index.ts            # public entry point (re-exports)
+│   ├── errors.ts           # ApiError shape
+│   ├── types.ts            # shared response/request types
+│   └── generated/          # 70+ auto-generated route namespaces
+├── dist/                   # compiled output (published to npm)
+├── docs/
+│   └── quickstart.md       # three end-to-end examples
+├── package.json
+├── tsconfig.json
+├── LICENSE
+└── README.md               # you are here
+```
+
+| Top-level path | What's in it |
+|---|---|
+| [`src/`](./src) | Client source. Hand-curated transport + ~70 generated namespace attachers. |
+| [`src/generated/`](./src/generated) | Auto-generated namespace files — one per bot route file. See the [namespace index](./src/generated/README.md). |
+| [`docs/`](./docs) | Hand-written walkthroughs and recipes. |
+| `dist/` | TypeScript build output. Don't edit. |
 
 ## Coverage
 
-The SDK currently wraps the most-used public surface area:
-
-- **Modules** — list the published module catalog, fetch a module schema
-- **Webhooks** — list targets/groups/schedules, send-now broadcasts
-- **Outbound webhooks** — list, preview, create, update, test, replay, delete
-- **Embeds** — list/save/delete templates, duplicate, version history, restore, send to channel
-- **Custom commands** — overview, list, save, preview, import, export, delete
-- **Personas** — list presets + own personas, create/update/delete both flows
-- **Moderation** — list cases for a guild
-- **Safety** — list and resolve evader detections
-
-The SDK stays hand-curated for stability. If you need an endpoint that's not covered, open an issue or PR and we’ll add it to the public client.
+The 70+ generated namespaces cover every public bot route. Seven namespaces (`modules`, `webhooks`, `embeds`, `moderation`, `safety`, `customCommands`, `personas`) ship richer hand-typed responses on top of the generated layer for ergonomics. See [`src/generated/README.md`](./src/generated/README.md) for the full namespace list with descriptions.
 
 ## Compatibility
 
-- Node 20+ (uses global `fetch`)
-- Works in edge runtimes (Vercel, Cloudflare Workers, Deno) — pass a custom `fetch` if needed
-- ESM-only
+- **Node 20+** (uses global `fetch`)
+- **Edge runtimes**: Vercel, Cloudflare Workers, Deno — pass a custom `fetch` if needed
+- **ESM-only**
+
+## Contributing
+
+Pull requests welcome. See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for the auto-generation workflow and conventions. Open an [issue](https://github.com/modly-public/modly-sdk/issues) for missing endpoints, type bugs, or DX requests.
 
 ## License
 
-MIT.
+MIT — see [`LICENSE`](./LICENSE).
+
+---
+
+Built with ❤ for [Modly](https://modly.net).
+
+Last updated: 2026-04-30
