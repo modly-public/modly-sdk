@@ -12,6 +12,23 @@
 npm install @modly/sdk
 ```
 
+## Run without npm registry
+
+The npm package isn't published yet — install straight from GitHub instead:
+
+```bash
+npm install github:modly-public/modly-sdk
+```
+
+…or clone the repo and import locally:
+
+```bash
+git clone https://github.com/modly-public/modly-sdk.git
+cd modly-sdk && npm install && npm run build
+```
+
+The `prepare` script auto-runs `npm run build` on git-URL installs, so `dist/` is populated even though it's gitignored.
+
 ## Quickstart
 
 ```ts
