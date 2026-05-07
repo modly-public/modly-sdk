@@ -36,6 +36,10 @@ await modly.webhooks.sendNow({
   targetIds: [targets[0]!.id],
   embedTemplateName: "weekly-update",
 });
+
+// Inspect the module catalog and a live schema
+const modules = await modly.modules.list();
+const automodSchema = await modly.modules.schema("automod");
 ```
 
 ## API keys
@@ -44,13 +48,18 @@ Generate a personal access token in the dashboard at **Account Settings → API 
 
 ## Coverage
 
-The SDK currently wraps the most-used surface area:
+The SDK currently wraps the most-used public surface area:
 
+- **Modules** — list the published module catalog, fetch a module schema
 - **Webhooks** — list targets/groups/schedules, send-now broadcasts
-- **Embeds** — list/save/delete templates, send template to a channel
-- **Moderation** — list cases for a guild (more endpoints coming)
+- **Outbound webhooks** — list, preview, create, update, test, replay, delete
+- **Embeds** — list/save/delete templates, duplicate, version history, restore, send to channel
+- **Custom commands** — overview, list, save, preview, import, export, delete
+- **Personas** — list presets + own personas, create/update/delete both flows
+- **Moderation** — list cases for a guild
+- **Safety** — list and resolve evader detections
 
-The full HTTP API has more endpoints than the SDK exposes today; everything in the SDK is hand-curated for stability. If you need an endpoint that's not covered, drop the `client.request()` you'd want into an issue and we'll add it.
+The SDK stays hand-curated for stability. If you need an endpoint that's not covered, open an issue or PR and we’ll add it to the public client.
 
 ## Compatibility
 
