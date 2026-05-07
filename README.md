@@ -1,4 +1,4 @@
-# @modly/sdk
+# @modly_public/sdk
 
 > Modly is the all-in-one Discord moderation bot — this is the official **TypeScript SDK** for its REST API. Use it from Node 20+, edge runtimes, or any other JS host to programmatically drive automod rules, embeds, webhooks, custom commands, moderation cases, forms, and the rest of the public guild surface.
 
@@ -9,7 +9,7 @@
 ## Install
 
 ```bash
-npm install @modly/sdk
+npm install @modly_public/sdk
 ```
 
 ## Run without npm registry
@@ -32,7 +32,7 @@ The `prepare` script auto-runs `npm run build` on git-URL installs, so `dist/` i
 ## Quickstart
 
 ```ts
-import { ModlyClient } from "@modly/sdk";
+import { ModlyClient } from "@modly_public/sdk";
 
 const modly = new ModlyClient({
   guildId: "1234567890",

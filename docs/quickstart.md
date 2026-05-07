@@ -5,7 +5,7 @@ These three flows cover the most common reasons people install the SDK. Each is 
 ## Setup
 
 ```ts
-import { ModlyClient } from "@modly/sdk";
+import { ModlyClient } from "@modly_public/sdk";
 
 const modly = new ModlyClient({
   guildId: process.env.MODLY_GUILD_ID!,
@@ -109,7 +109,7 @@ await modly.customCommands.import(file.commands);
 Every method throws `ApiError` on non-2xx responses:
 
 ```ts
-import { ApiError } from "@modly/sdk";
+import { ApiError } from "@modly_public/sdk";
 
 try {
   await modly.embeds.save("bad name", { content: "" });

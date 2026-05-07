@@ -1,5 +1,5 @@
 {
-  "name": "@modly/sdk",
+  "name": "@modly_public/sdk",
   "version": "0.1.0",
   "description": "TypeScript client for the Modly Discord bot REST API.",
   "license": "MIT",

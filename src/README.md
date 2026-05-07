@@ -15,7 +15,7 @@ This folder is the published SDK. Everything else in the repo (`dist/`, `docs/`)
 ## Usage
 
 ```ts
-import { ModlyClient } from "@modly/sdk";
+import { ModlyClient } from "@modly_public/sdk";
 
 const modly = new ModlyClient({
   guildId: "1234567890",

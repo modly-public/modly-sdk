@@ -7,7 +7,7 @@
  *
  * Usage:
  *
- *     import { ModlyClient } from "@modly/sdk";
+ *     import { ModlyClient } from "@modly_public/sdk";
  *
  *     const modly = new ModlyClient({
  *       guildId: "1234567890",

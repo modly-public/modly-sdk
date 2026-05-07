@@ -1,4 +1,4 @@
-# Contributing to @modly/sdk
+# Contributing to @modly_public/sdk
 
 Thanks for helping! This SDK is a thin TypeScript wrapper over the Modly REST API. Most of the surface is **auto-generated** from the bot's route definitions, so contributions usually fall into one of three buckets:
 

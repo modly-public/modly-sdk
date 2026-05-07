@@ -85,7 +85,7 @@ Auto-generated route bindings — one file per bot route file. Each export is an
 ## Usage
 
 ```ts
-import { ModlyClient } from "@modly/sdk";
+import { ModlyClient } from "@modly_public/sdk";
 
 const modly = new ModlyClient({ guildId, apiKey });
 
@@ -98,7 +98,7 @@ const appeals = await modly.appeals.list();
 You can also import an attacher and bind a sub-client:
 
 ```ts
-import { attachAutomod } from "@modly/sdk";
+import { attachAutomod } from "@modly_public/sdk";
 const automod = attachAutomod(myClient);
 ```
 

@@ -20,6 +20,6 @@ labels: bug
 
 ## Environment
 
-- `@modly/sdk` version:
+- `@modly_public/sdk` version:
 - Node version:
 - Runtime (Node / Vercel / Workers / Deno):
