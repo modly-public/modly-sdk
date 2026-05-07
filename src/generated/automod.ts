@@ -24,5 +24,11 @@ export function attachAutomod(client: ModlyClient) {
     /** T1 DELETE /:guildId/automod/rules/:id */
     deleteRules: (id: string, opts?: RequestOptions) =>
       client._request("DELETE", `/automod/rules/${encodeURIComponent(id)}`, undefined, opts),
+    /** T1 GET /:guildId/automod/rules/:id */
+    getId: (id: string, opts?: RequestOptions) =>
+      client._request("GET", `/automod/rules/${encodeURIComponent(id)}`, undefined, opts),
+    /** T1 POST /:guildId/automod/test-message */
+    testMessage: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/automod/test-message`, body, opts),
   } as const;
 }

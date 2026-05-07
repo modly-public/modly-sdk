@@ -36,5 +36,8 @@ export function attachReputation(client: ModlyClient) {
     /** T1 POST /:guildId/reputation/decay/run */
     decayRun: (opts?: RequestOptions) =>
       client._request("POST", `/reputation/decay/run`, undefined, opts),
+    /** T1 GET /:guildId/reputation/top */
+    listTop: (opts?: RequestOptions) =>
+      client._request("GET", `/reputation/top`, undefined, opts),
   } as const;
 }

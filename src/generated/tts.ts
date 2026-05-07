@@ -12,5 +12,8 @@ export function attachTts(client: ModlyClient) {
     /** T1 DELETE /:guildId/tts/transcripts/:sessionId */
     deleteTranscripts: (sessionId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/tts/transcripts/${encodeURIComponent(sessionId)}`, undefined, opts),
+    /** T1 POST /:guildId/tts/speak */
+    speak: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/tts/speak`, body, opts),
   } as const;
 }

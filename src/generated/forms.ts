@@ -33,5 +33,14 @@ export function attachForms(client: ModlyClient) {
     /** T1 POST /:guildId/forms/import */
     import: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/forms/import`, body, opts),
+    /** T1 GET /:guildId/forms/:formId */
+    getForm: (formId: string, opts?: RequestOptions) =>
+      client._request("GET", `/forms/${encodeURIComponent(formId)}`, undefined, opts),
+    /** T1 PATCH /:guildId/forms/:formId */
+    update: (formId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("PATCH", `/forms/${encodeURIComponent(formId)}`, body, opts),
+    /** T1 GET /:guildId/forms/submissions/:subId */
+    getSub: (subId: string, opts?: RequestOptions) =>
+      client._request("GET", `/forms/submissions/${encodeURIComponent(subId)}`, undefined, opts),
   } as const;
 }

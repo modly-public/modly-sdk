@@ -21,5 +21,8 @@ export function attachSavedResponses(client: ModlyClient) {
     /** T1 POST /:guildId/saved-responses/import */
     import: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/saved-responses/import`, body, opts),
+    /** T1 GET /:guildId/saved-responses/responses/:id */
+    getId: (id: string, opts?: RequestOptions) =>
+      client._request("GET", `/saved-responses/responses/${encodeURIComponent(id)}`, undefined, opts),
   } as const;
 }

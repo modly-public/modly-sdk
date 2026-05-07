@@ -6,6 +6,9 @@ export function attachServerStats(client: ModlyClient) {
     /** T1 GET /:guildId/server-stats */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/server-stats`, undefined, opts),
+    /** T1 GET /:guildId/server-stats/history */
+    listHistory: (opts?: RequestOptions) =>
+      client._request("GET", `/server-stats/history`, undefined, opts),
     /** T1 POST /:guildId/server-stats/channels */
     channels: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/server-stats/channels`, body, opts),

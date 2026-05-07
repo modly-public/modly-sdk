@@ -15,5 +15,8 @@ export function attachOnboarding(client: ModlyClient) {
     /** T1 DELETE /:guildId/onboarding */
     delete: (opts?: RequestOptions) =>
       client._request("DELETE", `/onboarding`, undefined, opts),
+    /** T1 GET /:guildId/onboarding/completions */
+    listCompletions: (opts?: RequestOptions) =>
+      client._request("GET", `/onboarding/completions`, undefined, opts),
   } as const;
 }

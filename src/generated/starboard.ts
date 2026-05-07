@@ -33,5 +33,8 @@ export function attachStarboard(client: ModlyClient) {
     /** T1 GET /:guildId/starboard/diagnostics */
     listDiagnostics: (opts?: RequestOptions) =>
       client._request("GET", `/starboard/diagnostics`, undefined, opts),
+    /** T1 GET /:guildId/starboard/top */
+    listTop: (opts?: RequestOptions) =>
+      client._request("GET", `/starboard/top`, undefined, opts),
   } as const;
 }

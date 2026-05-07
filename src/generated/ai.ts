@@ -45,5 +45,8 @@ export function attachAi(client: ModlyClient) {
     /** T1 GET /:guildId/ai/credentials */
     listCredentials: (opts?: RequestOptions) =>
       client._request("GET", `/ai/credentials`, undefined, opts),
+    /** T1 POST /:guildId/ai/run */
+    run: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/ai/run`, body, opts),
   } as const;
 }

@@ -33,5 +33,14 @@ export function attachLeveling(client: ModlyClient) {
     /** T1 PUT /:guildId/leveling/card/background */
     setCardBackground: (opts?: RequestOptions) =>
       client._request("PUT", `/leveling/card/background`, undefined, opts),
+    /** T1 GET /:guildId/leveling/top */
+    listTop: (opts?: RequestOptions) =>
+      client._request("GET", `/leveling/top`, undefined, opts),
+    /** T1 POST /:guildId/leveling/xp/give */
+    xpGive: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/leveling/xp/give`, body, opts),
+    /** T1 POST /:guildId/leveling/xp/take */
+    xpTake: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/leveling/xp/take`, body, opts),
   } as const;
 }

@@ -6,6 +6,9 @@ export function attachMemberNotes(client: ModlyClient) {
     /** T1 GET /:guildId/member-notes */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/member-notes`, undefined, opts),
+    /** T1 GET /:guildId/member-notes/search */
+    listSearch: (opts?: RequestOptions) =>
+      client._request("GET", `/member-notes/search`, undefined, opts),
     /** T1 GET /:guildId/member-notes/stats */
     listStats: (opts?: RequestOptions) =>
       client._request("GET", `/member-notes/stats`, undefined, opts),

@@ -24,5 +24,9 @@ export function attachWelcome(client: ModlyClient) {
     /** T1 GET /:guildId/rank-card/preview */
     listPreview_get2: (opts?: RequestOptions) =>
       client._request("GET", `/rank-card/preview`, undefined, opts),
+    /** T2 POST /:guildId/welcome/test */
+    // TODO: migrate welcome.ts to defineRoute() for typed body
+    test: (body?: unknown, opts?: RequestOptions) =>
+      client._request("POST", `/welcome/test`, body, opts),
   } as const;
 }
