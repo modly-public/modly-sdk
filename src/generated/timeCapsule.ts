@@ -6,6 +6,9 @@ export function attachTimeCapsule(client: ModlyClient) {
     /** T1 GET /:guildId/time-capsules */
     listTimeCapsules: (opts?: RequestOptions) =>
       client._request("GET", `/time-capsules`, undefined, opts),
+    /** T1 GET /:guildId/time-capsules/:capsuleId */
+    getCapsule: (capsuleId: string, opts?: RequestOptions) =>
+      client._request("GET", `/time-capsules/${encodeURIComponent(capsuleId)}`, undefined, opts),
     /** T1 GET /:guildId/time-capsules/export.csv */
     listExportCsv: (opts?: RequestOptions) =>
       client._request("GET", `/time-capsules/export.csv`, undefined, opts),

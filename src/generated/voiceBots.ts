@@ -13,10 +13,10 @@ export function attachVoiceBots(client: ModlyClient) {
     reconnect: (instanceId: string, opts?: RequestOptions) =>
       client._request("POST", `/voice-bots/${encodeURIComponent(instanceId)}/reconnect`, undefined, opts),
     /** T1 PATCH /:guildId/voice-bots/:instanceId */
-    update: (instanceId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateInstance: (instanceId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/voice-bots/${encodeURIComponent(instanceId)}`, body, opts),
     /** T1 DELETE /:guildId/voice-bots/:instanceId */
-    delete: (instanceId: string, opts?: RequestOptions) =>
+    deleteInstance: (instanceId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/voice-bots/${encodeURIComponent(instanceId)}`, undefined, opts),
   } as const;
 }

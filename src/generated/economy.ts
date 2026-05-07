@@ -30,5 +30,17 @@ export function attachEconomy(client: ModlyClient) {
     /** T1 POST /:guildId/economy/take */
     take: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/economy/take`, body, opts),
+    /** T1 GET /:guildId/economy/shop */
+    listShop: (opts?: RequestOptions) =>
+      client._request("GET", `/economy/shop`, undefined, opts),
+    /** T1 POST /:guildId/economy/users/balance */
+    usersBalance: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/economy/users/balance`, body, opts),
+    /** T1 POST /:guildId/economy/prune */
+    prune: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/economy/prune`, body, opts),
+    /** T1 GET /:guildId/economy/stats */
+    listStats: (opts?: RequestOptions) =>
+      client._request("GET", `/economy/stats`, undefined, opts),
   } as const;
 }

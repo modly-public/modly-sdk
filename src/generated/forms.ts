@@ -10,7 +10,7 @@ export function attachForms(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/forms`, body, opts),
     /** T1 DELETE /:guildId/forms/:formId */
-    delete: (formId: string, opts?: RequestOptions) =>
+    deleteForm: (formId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/forms/${encodeURIComponent(formId)}`, undefined, opts),
     /** T1 POST /:guildId/forms/:formId/publish */
     publish: (formId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
@@ -37,7 +37,7 @@ export function attachForms(client: ModlyClient) {
     getForm: (formId: string, opts?: RequestOptions) =>
       client._request("GET", `/forms/${encodeURIComponent(formId)}`, undefined, opts),
     /** T1 PATCH /:guildId/forms/:formId */
-    update: (formId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateForm: (formId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/forms/${encodeURIComponent(formId)}`, body, opts),
     /** T1 GET /:guildId/forms/submissions/:subId */
     getSub: (subId: string, opts?: RequestOptions) =>

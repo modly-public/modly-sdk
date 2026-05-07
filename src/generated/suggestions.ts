@@ -16,7 +16,7 @@ export function attachSuggestions(client: ModlyClient) {
     comments: (subId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/suggestions/${encodeURIComponent(subId)}/comments`, body, opts),
     /** T1 DELETE /:guildId/suggestions/:subId */
-    delete: (subId: string, opts?: RequestOptions) =>
+    deleteSub: (subId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/suggestions/${encodeURIComponent(subId)}`, undefined, opts),
   } as const;
 }

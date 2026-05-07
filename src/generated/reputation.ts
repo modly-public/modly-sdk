@@ -6,6 +6,9 @@ export function attachReputation(client: ModlyClient) {
     /** T1 GET /:guildId/reputation */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/reputation`, undefined, opts),
+    /** T1 GET /:guildId/reputation/users/:targetUserId */
+    getTargetUser: (targetUserId: string, opts?: RequestOptions) =>
+      client._request("GET", `/reputation/users/${encodeURIComponent(targetUserId)}`, undefined, opts),
     /** T1 GET /:guildId/reputation/export */
     listExport: (opts?: RequestOptions) =>
       client._request("GET", `/reputation/export`, undefined, opts),

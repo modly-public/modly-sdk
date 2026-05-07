@@ -13,7 +13,7 @@ export function attachPolls(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/polls`, body, opts),
     /** T1 PATCH /:guildId/polls/:pollId */
-    update: (pollId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updatePoll: (pollId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/polls/${encodeURIComponent(pollId)}`, body, opts),
     /** T1 POST /:guildId/polls/:pollId/close */
     close: (pollId: string, opts?: RequestOptions) =>
@@ -22,7 +22,7 @@ export function attachPolls(client: ModlyClient) {
     reopen: (pollId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/polls/${encodeURIComponent(pollId)}/reopen`, body, opts),
     /** T1 DELETE /:guildId/polls/:pollId */
-    delete: (pollId: string, opts?: RequestOptions) =>
+    deletePoll: (pollId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/polls/${encodeURIComponent(pollId)}`, undefined, opts),
   } as const;
 }

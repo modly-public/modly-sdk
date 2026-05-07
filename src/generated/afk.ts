@@ -16,7 +16,13 @@ export function attachAfk(client: ModlyClient) {
     get: (opts?: RequestOptions) =>
       client._request("GET", `/afk`, undefined, opts),
     /** T1 DELETE /:guildId/afk/:targetUserId */
-    delete: (targetUserId: string, opts?: RequestOptions) =>
+    deleteTargetUser: (targetUserId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/afk/${encodeURIComponent(targetUserId)}`, undefined, opts),
+    /** T1 GET /:guildId/afk/:targetUserId */
+    getTargetUser: (targetUserId: string, opts?: RequestOptions) =>
+      client._request("GET", `/afk/${encodeURIComponent(targetUserId)}`, undefined, opts),
+    /** T1 PUT /:guildId/afk/:targetUserId */
+    setTargetUser: (targetUserId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("PUT", `/afk/${encodeURIComponent(targetUserId)}`, body, opts),
   } as const;
 }

@@ -25,7 +25,7 @@ export function attachInboundWebhooks(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/inbound-webhooks`, body, opts),
     /** T1 PATCH /:guildId/inbound-webhooks/:hookId */
-    update: (hookId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateHook: (hookId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/inbound-webhooks/${encodeURIComponent(hookId)}`, body, opts),
     /** T1 POST /:guildId/inbound-webhooks/:hookId/rotate */
     rotate: (hookId: string, opts?: RequestOptions) =>
@@ -38,7 +38,7 @@ export function attachInboundWebhooks(client: ModlyClient) {
     deliveriesReplay: (hookId: string, deliveryId: string, opts?: RequestOptions) =>
       client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/deliveries/${encodeURIComponent(deliveryId)}/replay`, undefined, opts),
     /** T1 DELETE /:guildId/inbound-webhooks/:hookId */
-    delete: (hookId: string, opts?: RequestOptions) =>
+    deleteHook: (hookId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/inbound-webhooks/${encodeURIComponent(hookId)}`, undefined, opts),
   } as const;
 }

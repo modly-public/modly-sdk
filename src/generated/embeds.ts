@@ -13,7 +13,7 @@ export function attachEmbeds(client: ModlyClient) {
     duplicate: (name: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/embeds/${encodeURIComponent(name)}/duplicate`, body, opts),
     /** T1 DELETE /:guildId/embeds/:name */
-    delete: (name: string, opts?: RequestOptions) =>
+    deleteName: (name: string, opts?: RequestOptions) =>
       client._request("DELETE", `/embeds/${encodeURIComponent(name)}`, undefined, opts),
     /** T1 GET /:guildId/embeds/:name/versions */
     listVersions: (name: string, opts?: RequestOptions) =>

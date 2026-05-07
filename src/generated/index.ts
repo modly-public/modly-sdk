@@ -24,6 +24,7 @@ export { attachChannelUtils } from "./channelUtils.js";
 export { attachCommands } from "./commands.js";
 export { attachCompatibility } from "./compatibility.js";
 export { attachCompliance } from "./compliance.js";
+export { attachConfessions } from "./confessions.js";
 export { attachConnections } from "./connections.js";
 export { attachCounters } from "./counters.js";
 export { attachCustomCommands } from "./customCommands.js";

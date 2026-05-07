@@ -13,10 +13,10 @@ export function attachScheduledActions(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/scheduled-actions`, body, opts),
     /** T1 PATCH /:guildId/scheduled-actions/:id */
-    update: (id: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateId: (id: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/scheduled-actions/${encodeURIComponent(id)}`, body, opts),
     /** T1 DELETE /:guildId/scheduled-actions/:id */
-    delete: (id: string, opts?: RequestOptions) =>
+    deleteId: (id: string, opts?: RequestOptions) =>
       client._request("DELETE", `/scheduled-actions/${encodeURIComponent(id)}`, undefined, opts),
     /** T1 POST /:guildId/scheduled-actions/:id/run */
     run: (id: string, opts?: RequestOptions) =>

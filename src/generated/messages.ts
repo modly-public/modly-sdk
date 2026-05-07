@@ -13,10 +13,10 @@ export function attachMessages(client: ModlyClient) {
     defaultEmbedsSeed: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/messages/default-embeds/seed`, body, opts),
     /** T1 PUT /:guildId/messages/:key */
-    set: (key: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    setKey: (key: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PUT", `/messages/${encodeURIComponent(key)}`, body, opts),
     /** T1 DELETE /:guildId/messages/:key */
-    delete: (key: string, opts?: RequestOptions) =>
+    deleteKey: (key: string, opts?: RequestOptions) =>
       client._request("DELETE", `/messages/${encodeURIComponent(key)}`, undefined, opts),
     /** T1 GET /:guildId/messages/:key/instances */
     listInstances: (key: string, opts?: RequestOptions) =>

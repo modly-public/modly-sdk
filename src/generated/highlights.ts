@@ -27,5 +27,14 @@ export function attachHighlights(client: ModlyClient) {
     /** T1 PATCH /:guildId/highlights/settings */
     updateSettings: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/highlights/settings`, body, opts),
+    /** T1 GET /:guildId/highlights/:userId */
+    getUser: (userId: string, opts?: RequestOptions) =>
+      client._request("GET", `/highlights/${encodeURIComponent(userId)}`, undefined, opts),
+    /** T1 POST /:guildId/highlights/:userId */
+    addUser: (userId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/highlights/${encodeURIComponent(userId)}`, body, opts),
+    /** T1 DELETE /:guildId/highlights/:userId */
+    deleteUser: (userId: string, opts?: RequestOptions) =>
+      client._request("DELETE", `/highlights/${encodeURIComponent(userId)}`, undefined, opts),
   } as const;
 }

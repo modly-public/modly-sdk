@@ -16,7 +16,7 @@ export function attachGiveaways(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways`, body, opts),
     /** T1 PATCH /:guildId/giveaways/:giveawayId */
-    update: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateGiveaway: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/giveaways/${encodeURIComponent(giveawayId)}`, body, opts),
     /** T1 GET /:guildId/giveaways/:giveawayId/health */
     listHealth: (giveawayId: string, opts?: RequestOptions) =>
@@ -43,7 +43,7 @@ export function attachGiveaways(client: ModlyClient) {
     cancel: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/cancel`, body, opts),
     /** T1 DELETE /:guildId/giveaways/:giveawayId */
-    delete: (giveawayId: string, opts?: RequestOptions) =>
+    deleteGiveaway: (giveawayId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/giveaways/${encodeURIComponent(giveawayId)}`, undefined, opts),
     /** T1 GET /:guildId/giveaways/:giveawayId/participants.csv */
     listParticipantsCsv: (giveawayId: string, opts?: RequestOptions) =>

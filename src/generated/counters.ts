@@ -10,10 +10,10 @@ export function attachCounters(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/counters`, body, opts),
     /** T1 PATCH /:guildId/counters/:counterId */
-    update: (counterId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateCounter: (counterId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/counters/${encodeURIComponent(counterId)}`, body, opts),
     /** T1 DELETE /:guildId/counters/:counterId */
-    delete: (counterId: string, opts?: RequestOptions) =>
+    deleteCounter: (counterId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/counters/${encodeURIComponent(counterId)}`, undefined, opts),
     /** T1 POST /:guildId/counters/:counterId/publish */
     publish: (counterId: string, body: Record<string, unknown>, opts?: RequestOptions) =>

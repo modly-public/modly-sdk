@@ -19,13 +19,13 @@ export function attachMemberNotes(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/member-notes`, body, opts),
     /** T1 PATCH /:guildId/member-notes/:noteId */
-    update: (noteId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateNote: (noteId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/member-notes/${encodeURIComponent(noteId)}`, body, opts),
     /** T1 POST /:guildId/member-notes/:noteId/pin */
     pin: (noteId: string, opts?: RequestOptions) =>
       client._request("POST", `/member-notes/${encodeURIComponent(noteId)}/pin`, undefined, opts),
     /** T1 DELETE /:guildId/member-notes/:noteId */
-    delete: (noteId: string, opts?: RequestOptions) =>
+    deleteNote: (noteId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/member-notes/${encodeURIComponent(noteId)}`, undefined, opts),
     /** T1 POST /:guildId/member-notes/:noteId/restore */
     restore: (noteId: string, opts?: RequestOptions) =>

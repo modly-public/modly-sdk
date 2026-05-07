@@ -10,11 +10,17 @@ export function attachAutoresponders(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/autoresponders`, body, opts),
     /** T1 PATCH /:guildId/autoresponders/:ruleId */
-    update: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateRule: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/autoresponders/${encodeURIComponent(ruleId)}`, body, opts),
     /** T1 DELETE /:guildId/autoresponders/:ruleId */
-    delete: (ruleId: string, opts?: RequestOptions) =>
+    deleteRule: (ruleId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/autoresponders/${encodeURIComponent(ruleId)}`, undefined, opts),
+    /** T1 POST /:guildId/autoresponders/test */
+    test: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/autoresponders/test`, body, opts),
+    /** T1 GET /:guildId/autoresponders/telemetry */
+    listTelemetry: (opts?: RequestOptions) =>
+      client._request("GET", `/autoresponders/telemetry`, undefined, opts),
     /** T1 POST /:guildId/autoresponders/:ruleId/duplicate */
     duplicate: (ruleId: string, opts?: RequestOptions) =>
       client._request("POST", `/autoresponders/${encodeURIComponent(ruleId)}/duplicate`, undefined, opts),

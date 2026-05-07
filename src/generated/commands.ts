@@ -19,7 +19,7 @@ export function attachCommands(client: ModlyClient) {
     setRegistration: (id: string, name: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PUT", `/${encodeURIComponent(id)}/commands/${encodeURIComponent(name)}/registration`, body, opts),
     /** T1 PUT /:id/commands/:name */
-    set: (id: string, name: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    setName: (id: string, name: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PUT", `/${encodeURIComponent(id)}/commands/${encodeURIComponent(name)}`, body, opts),
     /** T1 PUT /:id/commands/:name/options/:path */
     setOptions: (id: string, name: string, path: string, body: Record<string, unknown>, opts?: RequestOptions) =>

@@ -27,6 +27,12 @@ export function attachAutomod(client: ModlyClient) {
     /** T1 GET /:guildId/automod/rules/:id */
     getId: (id: string, opts?: RequestOptions) =>
       client._request("GET", `/automod/rules/${encodeURIComponent(id)}`, undefined, opts),
+    /** T1 GET /:guildId/automod/word-blacklist */
+    listWordBlacklist: (opts?: RequestOptions) =>
+      client._request("GET", `/automod/word-blacklist`, undefined, opts),
+    /** T1 PUT /:guildId/automod/word-blacklist */
+    setWordBlacklist: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("PUT", `/automod/word-blacklist`, body, opts),
     /** T1 POST /:guildId/automod/test-message */
     testMessage: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/automod/test-message`, body, opts),

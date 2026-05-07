@@ -3,6 +3,9 @@ import type { ModlyClient, RequestOptions } from "../client.js";
 
 export function attachRecipes(client: ModlyClient) {
   return {
+    /** T1 GET /recipes */
+    get: (opts?: RequestOptions) =>
+      client._request("GET", `/recipes`, undefined, opts),
     /** T1 GET /:guildId/recipes/importers */
     listImporters: (opts?: RequestOptions) =>
       client._request("GET", `/recipes/importers`, undefined, opts),

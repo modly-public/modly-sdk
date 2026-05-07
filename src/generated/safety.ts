@@ -39,5 +39,14 @@ export function attachSafety(client: ModlyClient) {
     /** T1 GET /:guildId/safety/trends */
     listTrends: (opts?: RequestOptions) =>
       client._request("GET", `/safety/trends`, undefined, opts),
+    /** T1 POST /:guildId/safety/pfp-hashes */
+    pfpHashes: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("POST", `/safety/pfp-hashes`, body, opts),
+    /** T1 GET /:guildId/safety/scam-phrases */
+    listScamPhrases: (opts?: RequestOptions) =>
+      client._request("GET", `/safety/scam-phrases`, undefined, opts),
+    /** T1 PUT /:guildId/safety/scam-phrases */
+    setScamPhrases: (body: Record<string, unknown>, opts?: RequestOptions) =>
+      client._request("PUT", `/safety/scam-phrases`, body, opts),
   } as const;
 }

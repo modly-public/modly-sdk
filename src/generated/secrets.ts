@@ -10,7 +10,7 @@ export function attachSecrets(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", ``, body, opts),
     /** T1 DELETE /:guildId/:key */
-    delete: (key: string, opts?: RequestOptions) =>
+    deleteKey: (key: string, opts?: RequestOptions) =>
       client._request("DELETE", `/${encodeURIComponent(key)}`, undefined, opts),
   } as const;
 }

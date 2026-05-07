@@ -10,7 +10,7 @@ export function attachChannelGames(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/channel-games`, body, opts),
     /** T1 PATCH /:guildId/channel-games/:ruleId */
-    update: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
+    updateRule: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/channel-games/${encodeURIComponent(ruleId)}`, body, opts),
     /** T1 POST /:guildId/channel-games/:ruleId/reset */
     reset: (ruleId: string, opts?: RequestOptions) =>
@@ -31,7 +31,7 @@ export function attachChannelGames(client: ModlyClient) {
     listLeaderboard: (opts?: RequestOptions) =>
       client._request("GET", `/channel-games/leaderboard`, undefined, opts),
     /** T1 DELETE /:guildId/channel-games/:ruleId */
-    delete: (ruleId: string, opts?: RequestOptions) =>
+    deleteRule: (ruleId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/channel-games/${encodeURIComponent(ruleId)}`, undefined, opts),
   } as const;
 }
