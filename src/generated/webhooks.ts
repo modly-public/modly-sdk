@@ -18,14 +18,12 @@ export function attachWebhooks(client: ModlyClient) {
     /** T1 PATCH /:guildId/outbound-webhooks/:hookId */
     updateOutboundWebhooks: (hookId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/outbound-webhooks/${encodeURIComponent(hookId)}`, body, opts),
-    /** T2 POST /:guildId/outbound-webhooks/:hookId/test */
-    // TODO: migrate outbound-webhooks.ts to defineRoute() for typed body
-    outboundWebhooksTest: (hookId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/outbound-webhooks/:hookId/test */
+    outboundWebhooksTest: (hookId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/outbound-webhooks/${encodeURIComponent(hookId)}/test`, body, opts),
-    /** T2 POST /:guildId/outbound-webhooks/:hookId/deliveries/:deliveryId/replay */
-    // TODO: migrate outbound-webhooks.ts to defineRoute() for typed body
-    outboundWebhooksDeliveriesReplay: (hookId: string, deliveryId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/outbound-webhooks/${encodeURIComponent(hookId)}/deliveries/${encodeURIComponent(deliveryId)}/replay`, body, opts),
+    /** T1 POST /:guildId/outbound-webhooks/:hookId/deliveries/:deliveryId/replay */
+    outboundWebhooksDeliveriesReplay: (hookId: string, deliveryId: string, opts?: RequestOptions) =>
+      client._request("POST", `/outbound-webhooks/${encodeURIComponent(hookId)}/deliveries/${encodeURIComponent(deliveryId)}/replay`, undefined, opts),
     /** T1 DELETE /:guildId/outbound-webhooks/:hookId */
     deleteOutboundWebhooks: (hookId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/outbound-webhooks/${encodeURIComponent(hookId)}`, undefined, opts),

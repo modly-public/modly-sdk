@@ -15,9 +15,8 @@ export function attachAutoresponders(client: ModlyClient) {
     /** T1 DELETE /:guildId/autoresponders/:ruleId */
     delete: (ruleId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/autoresponders/${encodeURIComponent(ruleId)}`, undefined, opts),
-    /** T2 POST /:guildId/autoresponders/:ruleId/duplicate */
-    // TODO: migrate autoresponders.ts to defineRoute() for typed body
-    duplicate: (ruleId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/autoresponders/${encodeURIComponent(ruleId)}/duplicate`, body, opts),
+    /** T1 POST /:guildId/autoresponders/:ruleId/duplicate */
+    duplicate: (ruleId: string, opts?: RequestOptions) =>
+      client._request("POST", `/autoresponders/${encodeURIComponent(ruleId)}/duplicate`, undefined, opts),
   } as const;
 }

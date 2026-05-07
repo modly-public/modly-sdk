@@ -27,18 +27,16 @@ export function attachInboundWebhooks(client: ModlyClient) {
     /** T1 PATCH /:guildId/inbound-webhooks/:hookId */
     update: (hookId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/inbound-webhooks/${encodeURIComponent(hookId)}`, body, opts),
-    /** T2 POST /:guildId/inbound-webhooks/:hookId/rotate */
-    // TODO: migrate inbound-webhooks-admin.ts to defineRoute() for typed body
-    rotate: (hookId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/rotate`, body, opts),
-    /** T2 POST /:guildId/inbound-webhooks/:hookId/test */
-    // TODO: migrate inbound-webhooks-admin.ts to defineRoute() for typed body
-    test: (hookId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/inbound-webhooks/:hookId/rotate */
+    rotate: (hookId: string, opts?: RequestOptions) =>
+      client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/rotate`, undefined, opts),
+    /** T1 POST /:guildId/inbound-webhooks/:hookId/test */
+    // intentional unknown body — pass-through (MCP / dispatcher / arbitrary test payload)
+    test: (hookId: string, body: unknown, opts?: RequestOptions) =>
       client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/test`, body, opts),
-    /** T2 POST /:guildId/inbound-webhooks/:hookId/deliveries/:deliveryId/replay */
-    // TODO: migrate inbound-webhooks-admin.ts to defineRoute() for typed body
-    deliveriesReplay: (hookId: string, deliveryId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/deliveries/${encodeURIComponent(deliveryId)}/replay`, body, opts),
+    /** T1 POST /:guildId/inbound-webhooks/:hookId/deliveries/:deliveryId/replay */
+    deliveriesReplay: (hookId: string, deliveryId: string, opts?: RequestOptions) =>
+      client._request("POST", `/inbound-webhooks/${encodeURIComponent(hookId)}/deliveries/${encodeURIComponent(deliveryId)}/replay`, undefined, opts),
     /** T1 DELETE /:guildId/inbound-webhooks/:hookId */
     delete: (hookId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/inbound-webhooks/${encodeURIComponent(hookId)}`, undefined, opts),

@@ -12,9 +12,8 @@ export function attachAutoping(client: ModlyClient) {
     /** T1 POST /:guildId/autoping/rules */
     rules: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/autoping/rules`, body, opts),
-    /** T2 PATCH /:guildId/autoping/rules/:ruleId */
-    // TODO: migrate autoping.ts to defineRoute() for typed body
-    updateRules: (ruleId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 PATCH /:guildId/autoping/rules/:ruleId */
+    updateRules: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/autoping/rules/${encodeURIComponent(ruleId)}`, body, opts),
     /** T1 DELETE /:guildId/autoping/rules/:ruleId */
     deleteRules: (ruleId: string, opts?: RequestOptions) =>

@@ -13,7 +13,7 @@ export function attachPersonalization(client: ModlyClient) {
     deleteBotToken: (opts?: RequestOptions) =>
       client._request("DELETE", `/personalization/bot-token`, undefined, opts),
     /** T1 POST /:guildId/personalization/bot-token/reconnect */
-    botTokenReconnect: (body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/personalization/bot-token/reconnect`, body, opts),
+    botTokenReconnect: (opts?: RequestOptions) =>
+      client._request("POST", `/personalization/bot-token/reconnect`, undefined, opts),
   } as const;
 }

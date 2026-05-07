@@ -6,10 +6,9 @@ export function attachSavedResponses(client: ModlyClient) {
     /** T1 GET /:guildId/saved-responses */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/saved-responses`, undefined, opts),
-    /** T2 PUT /:guildId/saved-responses/assets */
-    // TODO: migrate saved-responses.ts to defineRoute() for typed body
-    setAssets: (body?: unknown, opts?: RequestOptions) =>
-      client._request("PUT", `/saved-responses/assets`, body, opts),
+    /** T1 PUT /:guildId/saved-responses/assets */
+    setAssets: (opts?: RequestOptions) =>
+      client._request("PUT", `/saved-responses/assets`, undefined, opts),
     /** T1 POST /:guildId/saved-responses/responses */
     responses: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/saved-responses/responses`, body, opts),

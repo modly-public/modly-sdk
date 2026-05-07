@@ -7,10 +7,10 @@ export function attachCaptcha(client: ModlyClient) {
     get: (opts?: RequestOptions) =>
       client._request("GET", `/captcha`, undefined, opts),
     /** T1 POST /:guildId/captcha/:challengeId/cancel */
-    cancel: (challengeId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/captcha/${encodeURIComponent(challengeId)}/cancel`, body, opts),
+    cancel: (challengeId: string, opts?: RequestOptions) =>
+      client._request("POST", `/captcha/${encodeURIComponent(challengeId)}/cancel`, undefined, opts),
     /** T1 POST /:guildId/captcha/users/:userId/clear */
-    usersClear: (userId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/captcha/users/${encodeURIComponent(userId)}/clear`, body, opts),
+    usersClear: (userId: string, opts?: RequestOptions) =>
+      client._request("POST", `/captcha/users/${encodeURIComponent(userId)}/clear`, undefined, opts),
   } as const;
 }

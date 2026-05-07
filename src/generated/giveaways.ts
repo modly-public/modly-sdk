@@ -9,10 +9,9 @@ export function attachGiveaways(client: ModlyClient) {
     /** T1 GET /:guildId/giveaways */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/giveaways`, undefined, opts),
-    /** T2 PUT /:guildId/giveaways/:giveawayId/image */
-    // TODO: migrate giveaways.ts to defineRoute() for typed body
-    setImage: (giveawayId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("PUT", `/giveaways/${encodeURIComponent(giveawayId)}/image`, body, opts),
+    /** T1 PUT /:guildId/giveaways/:giveawayId/image */
+    setImage: (giveawayId: string, opts?: RequestOptions) =>
+      client._request("PUT", `/giveaways/${encodeURIComponent(giveawayId)}/image`, undefined, opts),
     /** T1 POST /:guildId/giveaways */
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways`, body, opts),
@@ -34,17 +33,14 @@ export function attachGiveaways(client: ModlyClient) {
     /** T1 POST /:guildId/giveaways/:giveawayId/publish */
     publish: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/publish`, body, opts),
-    /** T2 POST /:guildId/giveaways/:giveawayId/end */
-    // TODO: migrate giveaways.ts to defineRoute() for typed body
-    end: (giveawayId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/end`, body, opts),
-    /** T2 POST /:guildId/giveaways/:giveawayId/reroll */
-    // TODO: migrate giveaways.ts to defineRoute() for typed body
-    reroll: (giveawayId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/giveaways/:giveawayId/end */
+    end: (giveawayId: string, opts?: RequestOptions) =>
+      client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/end`, undefined, opts),
+    /** T1 POST /:guildId/giveaways/:giveawayId/reroll */
+    reroll: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/reroll`, body, opts),
-    /** T2 POST /:guildId/giveaways/:giveawayId/cancel */
-    // TODO: migrate giveaways.ts to defineRoute() for typed body
-    cancel: (giveawayId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/giveaways/:giveawayId/cancel */
+    cancel: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways/${encodeURIComponent(giveawayId)}/cancel`, body, opts),
     /** T1 DELETE /:guildId/giveaways/:giveawayId */
     delete: (giveawayId: string, opts?: RequestOptions) =>
@@ -55,9 +51,8 @@ export function attachGiveaways(client: ModlyClient) {
     /** T1 GET /:guildId/giveaways/:giveawayId/export */
     listExport: (giveawayId: string, opts?: RequestOptions) =>
       client._request("GET", `/giveaways/${encodeURIComponent(giveawayId)}/export`, undefined, opts),
-    /** T2 POST /:guildId/giveaways/import */
-    // TODO: migrate giveaways.ts to defineRoute() for typed body
-    import: (body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/giveaways/import */
+    import: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/giveaways/import`, body, opts),
     /** T1 POST /:guildId/giveaways/:giveawayId/participants */
     participants: (giveawayId: string, body: Record<string, unknown>, opts?: RequestOptions) =>

@@ -15,14 +15,12 @@ export function attachSocialTracking(client: ModlyClient) {
     /** T1 DELETE /:guildId/social-tracking/subscriptions/:id */
     deleteSubscriptions: (id: string, opts?: RequestOptions) =>
       client._request("DELETE", `/social-tracking/subscriptions/${encodeURIComponent(id)}`, undefined, opts),
-    /** T2 POST /:guildId/social-tracking/subscriptions/:id/replay */
-    // TODO: migrate social-tracking.ts to defineRoute() for typed body
-    subscriptionsReplay: (id: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/social-tracking/subscriptions/${encodeURIComponent(id)}/replay`, body, opts),
-    /** T2 POST /:guildId/social-tracking/subscriptions/:id/reset-cursor */
-    // TODO: migrate social-tracking.ts to defineRoute() for typed body
-    subscriptionsResetCursor: (id: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/social-tracking/subscriptions/${encodeURIComponent(id)}/reset-cursor`, body, opts),
+    /** T1 POST /:guildId/social-tracking/subscriptions/:id/replay */
+    subscriptionsReplay: (id: string, opts?: RequestOptions) =>
+      client._request("POST", `/social-tracking/subscriptions/${encodeURIComponent(id)}/replay`, undefined, opts),
+    /** T1 POST /:guildId/social-tracking/subscriptions/:id/reset-cursor */
+    subscriptionsResetCursor: (id: string, opts?: RequestOptions) =>
+      client._request("POST", `/social-tracking/subscriptions/${encodeURIComponent(id)}/reset-cursor`, undefined, opts),
     /** T1 GET /:guildId/social-tracking/export */
     listExport: (opts?: RequestOptions) =>
       client._request("GET", `/social-tracking/export`, undefined, opts),

@@ -12,14 +12,12 @@ export function attachChannelGames(client: ModlyClient) {
     /** T1 PATCH /:guildId/channel-games/:ruleId */
     update: (ruleId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/channel-games/${encodeURIComponent(ruleId)}`, body, opts),
-    /** T2 POST /:guildId/channel-games/:ruleId/reset */
-    // TODO: migrate channel-games.ts to defineRoute() for typed body
-    reset: (ruleId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/channel-games/${encodeURIComponent(ruleId)}/reset`, body, opts),
-    /** T2 POST /:guildId/channel-games/:ruleId/prompt */
-    // TODO: migrate channel-games.ts to defineRoute() for typed body
-    prompt: (ruleId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/channel-games/${encodeURIComponent(ruleId)}/prompt`, body, opts),
+    /** T1 POST /:guildId/channel-games/:ruleId/reset */
+    reset: (ruleId: string, opts?: RequestOptions) =>
+      client._request("POST", `/channel-games/${encodeURIComponent(ruleId)}/reset`, undefined, opts),
+    /** T1 POST /:guildId/channel-games/:ruleId/prompt */
+    prompt: (ruleId: string, opts?: RequestOptions) =>
+      client._request("POST", `/channel-games/${encodeURIComponent(ruleId)}/prompt`, undefined, opts),
     /** T1 GET /:guildId/channel-games/:ruleId/question-bank.csv */
     listQuestionBankCsv: (ruleId: string, opts?: RequestOptions) =>
       client._request("GET", `/channel-games/${encodeURIComponent(ruleId)}/question-bank.csv`, undefined, opts),

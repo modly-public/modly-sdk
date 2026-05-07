@@ -4,6 +4,7 @@
 export { attachAccount } from "./account.js";
 export { attachAi } from "./ai.js";
 export { attachAma } from "./ama.js";
+export { attachAnalytics } from "./analytics.js";
 export { attachAppealPortal } from "./appealPortal.js";
 export { attachAppeals } from "./appeals.js";
 export { attachApplications } from "./applications.js";

@@ -6,10 +6,9 @@ export function attachIncidents(client: ModlyClient) {
     /** T1 GET /:guildId/raid/incidents */
     listIncidents: (opts?: RequestOptions) =>
       client._request("GET", `/raid/incidents`, undefined, opts),
-    /** T2 POST /:guildId/raid/incidents/:id/rollback */
-    // TODO: migrate incidents.ts to defineRoute() for typed body
-    raidIncidentsRollback: (id: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/raid/incidents/${encodeURIComponent(id)}/rollback`, body, opts),
+    /** T1 POST /:guildId/raid/incidents/:id/rollback */
+    raidIncidentsRollback: (id: string, opts?: RequestOptions) =>
+      client._request("POST", `/raid/incidents/${encodeURIComponent(id)}/rollback`, undefined, opts),
     /** T1 GET /:guildId/antinuke/incidents */
     listIncidents_get1: (opts?: RequestOptions) =>
       client._request("GET", `/antinuke/incidents`, undefined, opts),

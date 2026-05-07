@@ -15,9 +15,8 @@ export function attachPersonas(client: ModlyClient) {
     /** T1 DELETE /:guildId/personas/presets/:id */
     deletePresets: (id: string, opts?: RequestOptions) =>
       client._request("DELETE", `/personas/presets/${encodeURIComponent(id)}`, undefined, opts),
-    /** T2 POST /:guildId/personas/own */
-    // TODO: migrate personas.ts to defineRoute() for typed body
-    own: (body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/personas/own */
+    own: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/personas/own`, body, opts),
     /** T1 PATCH /:guildId/personas/own/:id */
     updateOwn: (id: string, body: Record<string, unknown>, opts?: RequestOptions) =>

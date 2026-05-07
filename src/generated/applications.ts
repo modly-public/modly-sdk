@@ -7,11 +7,11 @@ export function attachApplications(client: ModlyClient) {
     get: (opts?: RequestOptions) =>
       client._request("GET", `/applications`, undefined, opts),
     /** T1 POST /:guildId/applications/:alertId/resolve */
-    resolve: (alertId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/applications/${encodeURIComponent(alertId)}/resolve`, body, opts),
+    resolve: (alertId: string, opts?: RequestOptions) =>
+      client._request("POST", `/applications/${encodeURIComponent(alertId)}/resolve`, undefined, opts),
     /** T1 POST /:guildId/applications/:alertId/dismiss */
-    dismiss: (alertId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/applications/${encodeURIComponent(alertId)}/dismiss`, body, opts),
+    dismiss: (alertId: string, opts?: RequestOptions) =>
+      client._request("POST", `/applications/${encodeURIComponent(alertId)}/dismiss`, undefined, opts),
     /** T1 POST /:guildId/applications/:alertId/snooze */
     snooze: (alertId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/applications/${encodeURIComponent(alertId)}/snooze`, body, opts),

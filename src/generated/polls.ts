@@ -15,10 +15,9 @@ export function attachPolls(client: ModlyClient) {
     /** T1 PATCH /:guildId/polls/:pollId */
     update: (pollId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/polls/${encodeURIComponent(pollId)}`, body, opts),
-    /** T2 POST /:guildId/polls/:pollId/close */
-    // TODO: migrate polls.ts to defineRoute() for typed body
-    close: (pollId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/polls/${encodeURIComponent(pollId)}/close`, body, opts),
+    /** T1 POST /:guildId/polls/:pollId/close */
+    close: (pollId: string, opts?: RequestOptions) =>
+      client._request("POST", `/polls/${encodeURIComponent(pollId)}/close`, undefined, opts),
     /** T1 POST /:guildId/polls/:pollId/reopen */
     reopen: (pollId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/polls/${encodeURIComponent(pollId)}/reopen`, body, opts),

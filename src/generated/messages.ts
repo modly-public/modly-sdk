@@ -24,9 +24,8 @@ export function attachMessages(client: ModlyClient) {
     /** T1 GET /:guildId/messages/:key/instances/:instanceId */
     getInstance: (key: string, instanceId: string, opts?: RequestOptions) =>
       client._request("GET", `/messages/${encodeURIComponent(key)}/instances/${encodeURIComponent(instanceId)}`, undefined, opts),
-    /** T2 PATCH /:guildId/messages/:key/instances/:instanceId */
-    // TODO: migrate messages.ts to defineRoute() for typed body
-    updateInstances: (key: string, instanceId: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 PATCH /:guildId/messages/:key/instances/:instanceId */
+    updateInstances: (key: string, instanceId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/messages/${encodeURIComponent(key)}/instances/${encodeURIComponent(instanceId)}`, body, opts),
     /** T1 DELETE /:guildId/messages/:key/instances/:instanceId */
     deleteInstances: (key: string, instanceId: string, opts?: RequestOptions) =>

@@ -21,9 +21,8 @@ export function attachCommands(client: ModlyClient) {
     /** T1 PUT /:id/commands/:name */
     set: (id: string, name: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PUT", `/${encodeURIComponent(id)}/commands/${encodeURIComponent(name)}`, body, opts),
-    /** T2 PUT /:id/commands/:name/options/:path */
-    // TODO: migrate commands.ts to defineRoute() for typed body
-    setOptions: (id: string, name: string, path: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 PUT /:id/commands/:name/options/:path */
+    setOptions: (id: string, name: string, path: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PUT", `/${encodeURIComponent(id)}/commands/${encodeURIComponent(name)}/options/${encodeURIComponent(path)}`, body, opts),
   } as const;
 }

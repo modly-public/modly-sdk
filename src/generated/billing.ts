@@ -12,13 +12,11 @@ export function attachBilling(client: ModlyClient) {
     /** T1 POST /billing/cancel */
     cancel: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/billing/cancel`, body, opts),
-    /** T2 POST /billing/resume */
-    // TODO: migrate billing.ts to defineRoute() for typed body
-    resume: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/billing/resume`, body, opts),
-    /** T2 POST /billing/portal */
-    // TODO: migrate billing.ts to defineRoute() for typed body
-    portal: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/billing/portal`, body, opts),
+    /** T1 POST /billing/resume */
+    resume: (opts?: RequestOptions) =>
+      client._request("POST", `/billing/resume`, undefined, opts),
+    /** T1 POST /billing/portal */
+    portal: (opts?: RequestOptions) =>
+      client._request("POST", `/billing/portal`, undefined, opts),
   } as const;
 }

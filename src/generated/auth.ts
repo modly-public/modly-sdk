@@ -12,9 +12,8 @@ export function attachAuth(client: ModlyClient) {
     /** T1 POST /callback */
     callback: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/callback`, body, opts),
-    /** T2 POST /logout */
-    // TODO: migrate auth.ts to defineRoute() for typed body
-    logout: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/logout`, body, opts),
+    /** T1 POST /logout */
+    logout: (opts?: RequestOptions) =>
+      client._request("POST", `/logout`, undefined, opts),
   } as const;
 }

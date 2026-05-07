@@ -6,9 +6,8 @@ export function attachHoneypot(client: ModlyClient) {
     /** T1 GET /:guildId/honeypot */
     get: (opts?: RequestOptions) =>
       client._request("GET", `/honeypot`, undefined, opts),
-    /** T2 POST /:guildId/honeypot/traps/resend */
-    // TODO: migrate honeypot.ts to defineRoute() for typed body
-    trapsResend: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/honeypot/traps/resend`, body, opts),
+    /** T1 POST /:guildId/honeypot/traps/resend */
+    trapsResend: (opts?: RequestOptions) =>
+      client._request("POST", `/honeypot/traps/resend`, undefined, opts),
   } as const;
 }

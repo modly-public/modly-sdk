@@ -9,10 +9,9 @@ export function attachMe(client: ModlyClient) {
     /** T1 PATCH /preferences */
     updatePreferences: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/preferences`, body, opts),
-    /** T2 POST /sessions/revoke */
-    // TODO: migrate me.ts to defineRoute() for typed body
-    sessionsRevoke: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/sessions/revoke`, body, opts),
+    /** T1 POST /sessions/revoke */
+    sessionsRevoke: (opts?: RequestOptions) =>
+      client._request("POST", `/sessions/revoke`, undefined, opts),
     /** T1 GET /export */
     listExport: (opts?: RequestOptions) =>
       client._request("GET", `/export`, undefined, opts),
@@ -25,10 +24,9 @@ export function attachMe(client: ModlyClient) {
     /** T1 GET /guilds */
     listGuilds: (opts?: RequestOptions) =>
       client._request("GET", `/guilds`, undefined, opts),
-    /** T2 POST /guilds/refresh */
-    // TODO: migrate me.ts to defineRoute() for typed body
-    guildsRefresh: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/guilds/refresh`, body, opts),
+    /** T1 POST /guilds/refresh */
+    guildsRefresh: (opts?: RequestOptions) =>
+      client._request("POST", `/guilds/refresh`, undefined, opts),
     /** T1 GET /access/:guildId */
     getGuild: (opts?: RequestOptions) =>
       client._request("GET", `/access/:guildId`, undefined, opts),

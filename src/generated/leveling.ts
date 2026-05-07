@@ -9,9 +9,8 @@ export function attachLeveling(client: ModlyClient) {
     /** T1 GET /:guildId/leveling/export */
     listExport: (opts?: RequestOptions) =>
       client._request("GET", `/leveling/export`, undefined, opts),
-    /** T2 POST /:guildId/leveling/import */
-    // TODO: migrate leveling.ts to defineRoute() for typed body
-    import: (body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /:guildId/leveling/import */
+    import: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/leveling/import`, body, opts),
     /** T1 POST /:guildId/leveling/rewards */
     rewards: (body: Record<string, unknown>, opts?: RequestOptions) =>
@@ -28,13 +27,11 @@ export function attachLeveling(client: ModlyClient) {
     /** T1 DELETE /:guildId/leveling/users/:targetUserId */
     deleteUsers: (targetUserId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/leveling/users/${encodeURIComponent(targetUserId)}`, undefined, opts),
-    /** T2 POST /:guildId/leveling/rewards/sync */
-    // TODO: migrate leveling.ts to defineRoute() for typed body
-    rewardsSync: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/leveling/rewards/sync`, body, opts),
-    /** T2 PUT /:guildId/leveling/card/background */
-    // TODO: migrate leveling.ts to defineRoute() for typed body
-    setCardBackground: (body?: unknown, opts?: RequestOptions) =>
-      client._request("PUT", `/leveling/card/background`, body, opts),
+    /** T1 POST /:guildId/leveling/rewards/sync */
+    rewardsSync: (opts?: RequestOptions) =>
+      client._request("POST", `/leveling/rewards/sync`, undefined, opts),
+    /** T1 PUT /:guildId/leveling/card/background */
+    setCardBackground: (opts?: RequestOptions) =>
+      client._request("PUT", `/leveling/card/background`, undefined, opts),
   } as const;
 }

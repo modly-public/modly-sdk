@@ -10,8 +10,8 @@ export function attachVoiceBots(client: ModlyClient) {
     create: (body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/voice-bots`, body, opts),
     /** T1 POST /:guildId/voice-bots/:instanceId/reconnect */
-    reconnect: (instanceId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
-      client._request("POST", `/voice-bots/${encodeURIComponent(instanceId)}/reconnect`, body, opts),
+    reconnect: (instanceId: string, opts?: RequestOptions) =>
+      client._request("POST", `/voice-bots/${encodeURIComponent(instanceId)}/reconnect`, undefined, opts),
     /** T1 PATCH /:guildId/voice-bots/:instanceId */
     update: (instanceId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/voice-bots/${encodeURIComponent(instanceId)}`, body, opts),

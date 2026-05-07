@@ -27,10 +27,9 @@ export function attachServerStats(client: ModlyClient) {
     /** T1 DELETE /:guildId/server-stats/custom/:key */
     deleteCustom: (key: string, opts?: RequestOptions) =>
       client._request("DELETE", `/server-stats/custom/${encodeURIComponent(key)}`, undefined, opts),
-    /** T2 POST /:guildId/server-stats/refresh */
-    // TODO: migrate server-stats.ts to defineRoute() for typed body
-    refresh: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/server-stats/refresh`, body, opts),
+    /** T1 POST /:guildId/server-stats/refresh */
+    refresh: (opts?: RequestOptions) =>
+      client._request("POST", `/server-stats/refresh`, undefined, opts),
     /** T1 GET /:guildId/server-stats/diagnostics */
     listDiagnostics: (opts?: RequestOptions) =>
       client._request("GET", `/server-stats/diagnostics`, undefined, opts),

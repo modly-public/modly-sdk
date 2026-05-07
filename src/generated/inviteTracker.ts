@@ -21,10 +21,9 @@ export function attachInviteTracker(client: ModlyClient) {
     /** T1 DELETE /:guildId/invite-tracker/rewards/:roleId */
     deleteRewards: (roleId: string, opts?: RequestOptions) =>
       client._request("DELETE", `/invite-tracker/rewards/${encodeURIComponent(roleId)}`, undefined, opts),
-    /** T2 POST /:guildId/invite-tracker/rewards/sync */
-    // TODO: migrate invite-tracker.ts to defineRoute() for typed body
-    rewardsSync: (body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/invite-tracker/rewards/sync`, body, opts),
+    /** T1 POST /:guildId/invite-tracker/rewards/sync */
+    rewardsSync: (opts?: RequestOptions) =>
+      client._request("POST", `/invite-tracker/rewards/sync`, undefined, opts),
     /** T1 PATCH /:guildId/invite-tracker/labels/:code */
     updateLabels: (code: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("PATCH", `/invite-tracker/labels/${encodeURIComponent(code)}`, body, opts),

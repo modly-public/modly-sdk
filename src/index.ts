@@ -24,3 +24,9 @@ export { ModlyClient } from "./client.js";
 export type { ModlyClientOptions, RequestOptions } from "./client.js";
 export { ApiError } from "./errors.js";
 export type * from "./types.js";
+
+// Re-export every generated namespace attacher so library consumers can
+// build a sub-client (e.g. a partial proxy that only exposes one
+// namespace) without instantiating the full ModlyClient. The default
+// ergonomic path is still `new ModlyClient(...).automod.listRules()`.
+export * from "./generated/index.js";

@@ -12,10 +12,9 @@ export function attachModCoach(client: ModlyClient) {
     /** T1 GET /:guildId/mod-coach/runs/:runId/export */
     listExport: (runId: string, opts?: RequestOptions) =>
       client._request("GET", `/mod-coach/runs/${encodeURIComponent(runId)}/export`, undefined, opts),
-    /** T2 POST /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/dismiss */
-    // TODO: migrate mod-coach.ts to defineRoute() for typed body
-    runsRecommendationsDismiss: (runId: string, recommendationId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/dismiss`, body, opts),
+    /** T1 POST /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/dismiss */
+    runsRecommendationsDismiss: (runId: string, recommendationId: string, opts?: RequestOptions) =>
+      client._request("POST", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/dismiss`, undefined, opts),
     /** T1 POST /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/snooze */
     runsRecommendationsSnooze: (runId: string, recommendationId: string, body: Record<string, unknown>, opts?: RequestOptions) =>
       client._request("POST", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/snooze`, body, opts),
@@ -25,9 +24,8 @@ export function attachModCoach(client: ModlyClient) {
     /** T1 GET /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/preview */
     listPreview: (runId: string, recommendationId: string, opts?: RequestOptions) =>
       client._request("GET", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/preview`, undefined, opts),
-    /** T2 POST /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/apply */
-    // TODO: migrate mod-coach.ts to defineRoute() for typed body
-    runsRecommendationsApply: (runId: string, recommendationId: string, body?: unknown, opts?: RequestOptions) =>
-      client._request("POST", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/apply`, body, opts),
+    /** T1 POST /:guildId/mod-coach/runs/:runId/recommendations/:recommendationId/apply */
+    runsRecommendationsApply: (runId: string, recommendationId: string, opts?: RequestOptions) =>
+      client._request("POST", `/mod-coach/runs/${encodeURIComponent(runId)}/recommendations/${encodeURIComponent(recommendationId)}/apply`, undefined, opts),
   } as const;
 }

@@ -6,9 +6,9 @@ export function attachPublic(client: ModlyClient) {
     /** T1 GET /tools */
     listTools: (opts?: RequestOptions) =>
       client._request("GET", `/tools`, undefined, opts),
-    /** T2 POST /tools/:name */
-    // TODO: migrate public.ts to defineRoute() for typed body
-    tools: (name: string, body?: unknown, opts?: RequestOptions) =>
+    /** T1 POST /tools/:name */
+    // intentional unknown body — pass-through (MCP / dispatcher / arbitrary test payload)
+    tools: (name: string, body: unknown, opts?: RequestOptions) =>
       client._request("POST", `/tools/${encodeURIComponent(name)}`, body, opts),
   } as const;
 }
